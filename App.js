@@ -77,6 +77,7 @@ export default function App() {
 				  keyboardType='numeric'
 			  />
 		  </View>
+
 		  <View style={styles.bloco}>
 		  	<Text style={styles.label}> Valor 2: </Text>
 
@@ -88,6 +89,7 @@ export default function App() {
 				  keyboardType='numeric'
 			  />
 		  </View>
+
 		  <View style={styles.bloco}> 
 		  	<TouchableOpacity style={styles.botao} onPress={somar}>
 				  <Text style={styles.txtBotao}>Somar</Text>
@@ -116,6 +118,7 @@ export default function App() {
 
 		  	<Text style={styles.label}> Resultado: {resultado}</Text>
 		  </View>
+
     </View>
 	
   );
@@ -136,10 +139,10 @@ const styles = StyleSheet.create({
 	fontSize: 30
   },
   container: {
-    flex: 1,
-    backgroundColor: '#FBF8F3',
-    alignItems: 'center',
-    justifyContent: 'center',
+        flex: 1,
+        backgroundColor: '#FBF8F3',
+        alignItems: 'center',
+        justifyContent: 'center',
 	opacity: 0.75
   },
   titulo:{
@@ -148,8 +151,8 @@ const styles = StyleSheet.create({
 	marginVertical: '1.2rem'
   },
   label:{
-    fontSize: 30,
-    width: defaultWidth,
+        fontSize: 30,
+        width: defaultWidth,
 	marginVertical: '1.1rem'
   },
   input:{
