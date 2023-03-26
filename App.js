@@ -139,10 +139,10 @@ const styles = StyleSheet.create({
 	fontSize: 30
   },
   container: {
-        flex: 1,
-        backgroundColor: '#FBF8F3',
-        alignItems: 'center',
-        justifyContent: 'center',
+    flex: 1,
+    backgroundColor: '#FBF8F3',
+    alignItems: 'center',
+    justifyContent: 'center',
 	opacity: 0.75
   },
   titulo:{
@@ -151,8 +151,8 @@ const styles = StyleSheet.create({
 	marginVertical: '1.2rem'
   },
   label:{
-        fontSize: 30,
-        width: defaultWidth,
+    fontSize: 30,
+	width: defaultWidth,
 	marginVertical: '1.1rem'
   },
   input:{
