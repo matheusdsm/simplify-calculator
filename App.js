@@ -1,73 +1,56 @@
+//imc-calculator; licensed under MIT license. brought by matheusdsm/justonedev.
+
 import React, {useState} from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 
 export default function App() {
-
-  const [nome, setNome] = useState("");
-
-  const [nomeTxt, setNomeTxt] = useState("");
 	
   const [valor1, setValor1] = useState(0);
-
+	
   const [valor2, setValor2] = useState(0);
 
-  const [resultado, setResultado] = useState(0);
-  
+  const [resultado, setResultado] = useState("");
 
-  function somar(){
+  function imcSum(){
+	  
+	  let sum = (parseFloat(valor1) / (parseFloat(valor2) * parseFloat(valor2)));
 
-	  let result = parseFloat(valor1) + parseFloat(valor2);
+	  let imc = sum;
+	  
+	  let result = "";
+	  
+	  if (imc <= 16.9) {
+		  result = "Muito abaixo do peso :( \n - IMC: " + imc;
+	  } 
+	  else if ((imc <= 17) && (imc >= 18.4)) {
+		  result = "Abaixo do peso... \n - IMC: " + imc;
+	  }
+	  else if ((imc <= 18.5) && (imc >= 24.9)) {
+		  result = "Peso normal. \n - IMC: " +imc;	
+	  } 
+	  else if ((imc <= 25) && (imc >= 29.9)) {
+		  result = "Acima do Peso ... :( \n - IMC: " +imc;
+	  }
+	  else if ((imc <= 30) && (imc >= 34.9)) {
+		  result = "Obesidade grau I \n - IMC: " +imc;
+	  }
+	  else if ((imc <= 35) && (imc >= 40)) {
+		  result = "Obesidade grau II \n - IMC: " +imc;
+	  }
+	  else if ((imc > 40)) {
+		  result = "Obesidade grau III \n - IMC: " +imc;
+	  }
 
 	  setResultado(result);
   }
 	
-  function subtrair(){
-	  
-	  let result = parseFloat(valor1) - parseFloat(valor2);
-	  
-	  setResultado(result);
-  }
-
-  function multiplicar(){
-	  
-	  let result = parseFloat(valor1) * parseFloat(valor2);
-	  
-	  setResultado(result);
-  }
-	
-  function dividir(){
-	  let result = parseFloat(valor1) / parseFloat(valor2);
-	  
-	  setResultado(result);
-  }	
-	
-
-  function lerNome(){
-
-	  setNome('Bem vindo ' + nomeTxt + ' :)');
-  }
   return (
     <View style={styles.container}>
       
-		  <Text style={styles.titulo}><i>Simplify Calculator</i></Text>
-
-		  <View style={styles.bloco}>
-			  <Text style={styles.label}> Nome: </Text>
-
-			  <TextInput 
-				  style={styles.input}
-				  value={nomeTxt}
-				  onChangeText={(texto)=>setNomeTxt(texto)}
-			  />
-			  <TouchableOpacity style={styles.botao} onPress={lerNome}>
-				  <Text style={styles.txtBotao}>Enviar</Text>
-			  </TouchableOpacity>
-
-			  <Text style={styles.titulo}>{nome}</Text>
-		  </View>
+		  <Text style={styles.titulo}><i>IMC Calculator</i></Text>
 		
 		  <View style={styles.bloco}>
-		  	<Text style={styles.label}> Valor 1: </Text>
+		  	<Text style={styles.label}> Peso KG (eg; 80): </Text>
 
 			  <TextInput 
 				  style={styles.input}
@@ -77,9 +60,9 @@ export default function App() {
 				  keyboardType='numeric'
 			  />
 		  </View>
-
+		  
 		  <View style={styles.bloco}>
-		  	<Text style={styles.label}> Valor 2: </Text>
+		  	<Text style={styles.label}> Altura M² (eg; 1,7): </Text>
 
 			  <TextInput 
 				  style={styles.input}
@@ -89,28 +72,11 @@ export default function App() {
 				  keyboardType='numeric'
 			  />
 		  </View>
+		  
 
 		  <View style={styles.bloco}> 
-		  	<TouchableOpacity style={styles.botao} onPress={somar}>
-				  <Text style={styles.txtBotao}>Somar</Text>
-			  </TouchableOpacity>
-		  </View>
-		  
-		  <View style={styles.bloco}> 
-		  	<TouchableOpacity style={styles.botao} onPress={subtrair}>
-				  <Text style={styles.txtBotao}>Subtrair</Text>
-			  </TouchableOpacity>
-		  </View>
-		  
-		  <View style={styles.bloco}> 
-		  	<TouchableOpacity style={styles.botao} onPress={multiplicar}>
-				  <Text style={styles.txtBotao}>Multiplicar</Text>
-			  </TouchableOpacity>
-		  </View>
-		  
-		  <View style={styles.bloco}> 
-		  	<TouchableOpacity style={styles.botao} onPress={dividir}>
-				  <Text style={styles.txtBotao}>Dividir</Text>
+		  	<TouchableOpacity style={styles.botao} onPress={imcSum}>
+				  <Text style={styles.txtBotao}>Resultado: </Text>
 			  </TouchableOpacity>
 		  </View>
 		  
@@ -128,7 +94,7 @@ let defaultWidth = 480;
 
 const styles = StyleSheet.create({
   botao:{
-	backgroundColor: '#5DB7DE',
+	backgroundColor: '#FCB07E',
 	width: defaultWidth,
 	paddingVertical: '1.2rem',
 	paddingHorizontal: '1rem',
@@ -140,10 +106,11 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: '#FBF8F3',
+    backgroundColor: '#E2E8C0',
     alignItems: 'center',
     justifyContent: 'center',
-	opacity: 0.75
+	opacity: 0.75,
+	fontFamily: 'Arial'
   },
   titulo:{
 	fontSize:30,
